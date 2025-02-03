@@ -1,50 +1,53 @@
 import "./style.css";
-const API = "baca20cc-b70c-481b-84cc-01b7f896881e";
+const AQCN = "";
 const searchButton = document.querySelector("button");
-const datalist = document.querySelector("#countries");
-const input = document.querySelector("#country");
-const countries = [];
-document.addEventListener("DOMContentLoaded", () => {
-    getWeatherDataCountries().then((response) =>
-        addOptions(response, datalist)
-    );
+const weatherInfo = document.querySelector(".weather-info");
+const input = document.querySelector("#city");
+
+searchButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    getWeatherDataCity(input.value).then((response) => {
+        displayData(response);
+    });
+    input.value = "";
 });
 
-input.addEventListener("input", () => {
-    if (input.value.trim() !== "") {
-        displayOptions(input.value);
+function displayData(data) {
+    const block = document.createElement("div");
+    const h1 = document.createElement("h1");
+    block.classList.add("block");
+    const text = document.createTextNode(`Air Quality Index: ${data["aqi"]}`);
+    const text2 = document.createTextNode(getAQIMessage(data["aqi"]));
+    h1.textContent = data["city"]["name"];
+    block.appendChild(h1);
+    block.appendChild(text);
+    block.appendChild(document.createElement("br"));
+    block.appendChild(text2);
+    weatherInfo.appendChild(block);
+    console.log(data);
+}
+
+function getAQIMessage(index) {
+    if (index > 300) {
+        return "Everyone should avoid any physical activity outdoors.";
+    } else if (index > 200 && index <= 300) {
+        return "Active children and adults, as well as people with respiratory diseases such as asthma, should avoid any physical exertion outdoors; everyone else, especially children, should limit outdoor activities.";
+    } else if (index > 150 && index <= 200) {
+        return `Active children and adults, as well as people with respiratory diseases such as asthma, should avoid prolonged exertion outdoors; everyone else, especially children, should limit prolonged outdoor exertion.`;
+    } else if (index > 50 && index <= 150) {
+        return `Active children and adults, as well as people with respiratory diseases such as asthma, should limit prolonged physical exertion outdoors.`;
     }
-});
-
-async function addOptions(data) {
-    data.forEach((countryObject) => {
-        countries.push(countryObject["country"]);
-    });
+    return "";
 }
 
-function displayOptions(value) {
-    datalist.innerHTML = "";
-    let displaybleOptions = [];
-    countries.forEach((country) => {
-        if (country.toLowerCase().startsWith(value.toLowerCase())) {
-            displaybleOptions.push(country);
-        }
-    });
-    displaybleOptions = displaybleOptions.slice(0, 10);
-    displaybleOptions.forEach((country) => {
-        const option = document.createElement("div");
-        option.value = country;
-        option.textContent = country;
-        datalist.appendChild(option);
-    });
-}
-
-async function getWeatherDataCountries() {
+async function getWeatherDataCity(city) {
     try {
         const response = await fetch(
-            `https://api.airvisual.com/v2/countries?key=${API}`
+            `https://api.waqi.info/feed/${city}/?token=${AQCN}`,
+            { mode: "cors" }
         );
         const json = await response.json();
+
         return json["data"];
     } catch (error) {
         console.error(error.message);

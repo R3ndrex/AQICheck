@@ -3,24 +3,30 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script type="module" src="index.js"></script>
         <title>Weather Report</title>
     </head>
     <body>
-        <h1>Check Weather!</h1>
-        <form action="">
-            <label for="country">Country</label>
-            <input
-                list="countries"
-                type="search"
-                id="country"
-                name="user_country"
-                autocomplete="Enter your country"
-            />
-            <div id="countries"></div>
-            <button type="button">Search</button>
-        </form>
+        <main>
+            <form novalidate>
+                <legend>
+                    <h1>Check Weather!</h1>
+                </legend>
+                <label for="city">
+                    <h2>City</h2>
+                </label>
+                <input
+                    type="search"
+                    id="city"
+                    name="user_city"
+                    placeholder="Enter your city"
+                />
+                <button type="button">Search</button>
+            </form>
 
-        <div class="weather-info"></div>
+            <div class="weather-info"></div>
+        </main>
+        <footer>
+            <h2>Made by R3ndrex</h2>
+        </footer>
     </body>
 </html>

@@ -1,4 +1,3 @@
-import "./App.css";
 import DataSection from "./components/DataSection.jsx";
 import { useState } from "react";
 

@@ -1,3 +1,4 @@
+import PollutionForecast from "./PollutionForecast";
 export default function DataSection({ data }) {
     return (
         <main className="flex gap-5 flex-col items-center">
@@ -5,58 +6,22 @@ export default function DataSection({ data }) {
                 <h1 className="text-2xl">{data.data.city.name}</h1>
                 <p>AQI: {data.data.aqi}</p>
             </section>
-            <section className="inline-flex gap-5 border-1 ">
-                <h2>o3 Forecast</h2>
-                {data.data.forecast.daily.o3.map((day) => (
-                    <div className="flex flex-col">
-                        <h3>Day: {day.day}</h3>
-                        <ul>
-                            <li>Max: {day.max}</li>
-                            <li>Min: {day.min}</li>
-                            <li>Average: {day.avg}</li>
-                        </ul>
-                    </div>
-                ))}
-            </section>
-            <section className="inline-flex gap-5 border-1 ">
-                <h2>pm10 Forecast</h2>
-                {data.data.forecast.daily.pm10.map((day) => (
-                    <div className="flex flex-col">
-                        <h3>Day: {day.day}</h3>
-                        <ul>
-                            <li>Max: {day.max}</li>
-                            <li>Min: {day.min}</li>
-                            <li>Average: {day.avg}</li>
-                        </ul>
-                    </div>
-                ))}
-            </section>
-            <section className="inline-flex gap-5 border-1 ">
-                <h2>pm25 Forecast</h2>
-                {data.data.forecast.daily.pm25.map((day) => (
-                    <div className="flex flex-col">
-                        <h3>Day: {day.day}</h3>
-                        <ul>
-                            <li>Max: {day.max}</li>
-                            <li>Min: {day.min}</li>
-                            <li>Average: {day.avg}</li>
-                        </ul>
-                    </div>
-                ))}
-            </section>
-            <section className="inline-flex gap-5 border-1 ">
-                <h2>UVI Forecast</h2>
-                {data.data.forecast.daily.uvi.map((day) => (
-                    <div className="flex flex-col">
-                        <h3>Day: {day.day}</h3>
-                        <ul>
-                            <li>Max: {day.max}</li>
-                            <li>Min: {day.min}</li>
-                            <li>Average: {day.avg}</li>
-                        </ul>
-                    </div>
-                ))}
-            </section>
+            <PollutionForecast
+                pollutionData={data.data.forecast.daily.o3}
+                pollutionName={"O3"}
+            />
+            <PollutionForecast
+                pollutionData={data.data.forecast.daily.pm10}
+                pollutionName={"PM10"}
+            />
+            <PollutionForecast
+                pollutionData={data.data.forecast.daily.pm25}
+                pollutionName={"PM25"}
+            />
+            <PollutionForecast
+                pollutionData={data.data.forecast.daily.uvi}
+                pollutionName={"UVI"}
+            />
         </main>
     );
 }

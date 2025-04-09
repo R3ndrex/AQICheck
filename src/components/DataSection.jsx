@@ -1,7 +1,6 @@
 import PollutionForecast from "./PollutionForecast";
 export default function DataSection({ data }) {
     const DailyArray = Object.entries(data.data.forecast.daily);
-    console.log(DailyArray);
     return (
         <main className="flex gap-5 flex-col items-center mb-[5rem]">
             <section>

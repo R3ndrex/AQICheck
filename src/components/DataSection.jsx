@@ -1,7 +1,7 @@
 import PollutionForecast from "./PollutionForecast";
 export default function DataSection({ data }) {
     return (
-        <main className="flex gap-5 flex-col items-center">
+        <main className="flex gap-5 flex-col items-center mb-[5rem]">
             <section>
                 <h1 className="text-2xl">{data.data.city.name}</h1>
                 <p>AQI: {data.data.aqi}</p>

@@ -1,14 +1,12 @@
-import {} from "./utils/useFetchData.jsx";
 import "./App.css";
 import DataSection from "./components/DataSection.jsx";
-import { useState, useEffect } from "react";
-const TOKEN = "a73a946df6d5ae75e48ae5d190163bd1464ecc2d";
+import { useState } from "react";
 
 function App() {
     const [inputValue, setInputValue] = useState();
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     function handleSubmit() {
         const controller = new AbortController();
@@ -16,9 +14,12 @@ function App() {
         setData(null);
         setLoading(true);
         async function fetchData() {
-            const response = await fetch(, {
-                signal: controller.signal,
-            });
+            const response = await fetch(
+                `https://api.waqi.info/feed/${inputValue}/?token=${process.env.TOKEN}`,
+                {
+                    signal: controller.signal,
+                }
+            );
             if (!response.ok)
                 throw new Error("There is a problem with fetching data");
 
@@ -56,10 +57,10 @@ function App() {
             <button type="submit" onClick={handleSubmit}>
                 Submit
             </button>
-            <DataSection data={data} />
 
-            <>{error&&<h2>Error: {error}</h2> }</>
-            <>{loading&& <h2>Loading</h2>}</>
+            <>{data && <DataSection data={data} />}</>
+            <>{error && <h2>Error: {error}</h2>}</>
+            <>{loading && <h2>Loading</h2>}</>
         </>
     );
 }

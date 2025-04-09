@@ -41,8 +41,6 @@ function App() {
             .finally(() => {
                 setLoading(false);
             });
-
-        return () => controller.abort();
     }
 
     return (

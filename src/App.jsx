@@ -9,7 +9,6 @@ function App() {
     const [loading, setLoading] = useState(false);
 
     function handleSubmit() {
-        const controller = new AbortController();
         setError(null);
         setData(null);
         setLoading(true);
@@ -17,10 +16,7 @@ function App() {
             const response = await fetch(
                 `https://api.waqi.info/feed/${inputValue}/?token=${
                     import.meta.env.VITE_TOKEN
-                }`,
-                {
-                    signal: controller.signal,
-                }
+                }`
             );
             if (!response.ok)
                 throw new Error("There is a problem with fetching data");

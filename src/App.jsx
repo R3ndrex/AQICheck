@@ -40,19 +40,21 @@ function App() {
 
     return (
         <>
-            <h1>Enter your city</h1>
-            <input
-                type="text"
-                name="city"
-                id="city"
-                autoFocus
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-            />
-            <button type="submit" onClick={handleSubmit}>
-                Submit
-            </button>
-
+            <header className="flex flex-col justify-center items-center">
+                <h1 className="text-2xl">AQI Check</h1>
+                <input
+                    type="text"
+                    name="city"
+                    id="city"
+                    placeholder="Enter your city"
+                    autoFocus
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button type="submit" onClick={handleSubmit}>
+                    Submit
+                </button>
+            </header>
             <>{data && <DataSection data={data} />}</>
             <>{error && <h2>Error: {error}</h2>}</>
             <>{loading && <h2>Loading</h2>}</>

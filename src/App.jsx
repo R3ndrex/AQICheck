@@ -16,7 +16,7 @@ function App() {
         async function fetchData() {
             const response = await fetch(
                 `https://api.waqi.info/feed/${inputValue}/?token=${
-                    import.meta.env.TOKEN
+                    import.meta.env.VITE_TOKEN
                 }`,
                 {
                     signal: controller.signal,

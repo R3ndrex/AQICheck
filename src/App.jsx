@@ -1,12 +1,12 @@
 import DataSection from "./components/DataSection.jsx";
-import { useState } from "react";
-
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 function App() {
     const [inputValue, setInputValue] = useState("");
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-
+    const ref = useRef();
     function handleSubmit() {
         setError(null);
         setData(null);
@@ -37,7 +37,13 @@ function App() {
                 setLoading(false);
             });
     }
-
+    function showAside() {
+        if (ref.current.classList.contains("visible")) {
+            ref.current.classList.remove("visible");
+        } else {
+            ref.current.classList.add("visible");
+        }
+    }
     return (
         <>
             <header className="flex flex-col justify-center items-center">
@@ -58,6 +64,14 @@ function App() {
             <>{data && <DataSection data={data} />}</>
             <>{error && <h2>Error: {error}</h2>}</>
             <>{loading && <h2>Loading</h2>}</>
+            <div className="burger" onClick={showAside}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <aside ref={ref}>
+                <Link to={"/map"}>View Map</Link>
+            </aside>
         </>
     );
 }

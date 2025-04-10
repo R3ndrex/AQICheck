@@ -2,3 +2,7 @@
 input {
     border-bottom: 1px solid gray;
 }
+.map {
+    border: 1px solid black;
+    height: 75vh;
+}

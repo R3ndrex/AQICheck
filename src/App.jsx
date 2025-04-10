@@ -2,7 +2,7 @@ import DataSection from "./components/DataSection.jsx";
 import { useState } from "react";
 
 function App() {
-    const [inputValue, setInputValue] = useState();
+    const [inputValue, setInputValue] = useState("");
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);

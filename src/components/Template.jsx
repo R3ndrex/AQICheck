@@ -14,11 +14,12 @@ export default function Template() {
                 <div className="h-[1rem]"></div>
             </div>
             <aside
-                className={`absolute top-0 right-0 bg-emerald-200 h-[100vh] w-[25%] ${
+                className={`absolute text-2xl flex flex-col gap-5 justify-center items-center top-0 right-0 bg-emerald-200 h-[100vh] w-[25%] ${
                     visible ? "" : "invisible"
                 }`}
             >
                 <Link to={"/map"}>View Map</Link>
+                <Link to={""}>View Main Page</Link>
             </aside>
         </>
     );

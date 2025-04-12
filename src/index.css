@@ -12,3 +12,11 @@ input {
         border-top: 3px solid black;
     }
 }
+aside {
+    > * {
+        transition: transform 0.1s;
+    }
+    > *:hover {
+        transform: scale(1.1);
+    }
+}

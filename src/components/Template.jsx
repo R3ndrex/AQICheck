@@ -12,7 +12,7 @@ export default function Template() {
     return (
         <>
             <Outlet />
-            <div className="burger ml-auto" onClick={showAside}>
+            <div className="burger m-5" onClick={showAside}>
                 <div></div>
                 <div></div>
                 <div></div>

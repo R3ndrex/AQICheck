@@ -1,23 +1,23 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 export default function Template() {
-    const ref = useRef();
-    function showAside() {
-        if (ref.current.classList.contains("visible")) {
-            ref.current.classList.remove("visible");
-        } else {
-            ref.current.classList.add("visible");
-        }
-    }
+    const [visible, setVisible] = useState(false);
     return (
         <>
             <Outlet />
-            <div className="burger m-5" onClick={showAside}>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div
+                className="burger m-5 absolute top-0 right-0 w-[3rem] h-[3rem]"
+                onClick={() => setVisible((prev) => !prev)}
+            >
+                <div className="h-[1rem]"></div>
+                <div className="h-[1rem]"></div>
+                <div className="h-[1rem]"></div>
             </div>
-            <aside ref={ref}>
+            <aside
+                className={`absolute top-0 right-0 bg-emerald-200 h-[100vh] w-[25%] ${
+                    visible ? "" : "invisible"
+                }`}
+            >
                 <Link to={"/map"}>View Map</Link>
             </aside>
         </>

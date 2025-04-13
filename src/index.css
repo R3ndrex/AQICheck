@@ -21,11 +21,43 @@ input {
         border-top: 3px solid black;
     }
 }
+body {
+    overflow-x: hidden;
+}
 aside {
+    position: absolute;
     > * {
         transition: transform 0.1s;
     }
     > *:hover {
         transform: scale(1.1);
+    }
+}
+
+.closing {
+    animation: 1s closing 1 alternate forwards;
+}
+.opening {
+    animation: 1s opening 1 alternate forwards;
+}
+
+@keyframes closing {
+    from {
+        opacity: 1;
+        transform: translate(0);
+    }
+    to {
+        opacity: 0;
+        transform: translate(50vh);
+    }
+}
+@keyframes opening {
+    from {
+        opacity: 0;
+        transform: translate(50vh);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0);
     }
 }

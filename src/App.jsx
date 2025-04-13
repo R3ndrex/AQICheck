@@ -56,8 +56,20 @@ function App() {
                 </button>
             </header>
             <>{data && <DataSection data={data} />}</>
-            <>{error && <h2>Error: {error}</h2>}</>
-            <>{loading && <h2>Loading</h2>}</>
+            <>
+                {error && (
+                    <h2 className="text-2xl text-red-500 mt-5 flex items-center justify-center">
+                        Error: {error}
+                    </h2>
+                )}
+            </>
+            <>
+                {loading && (
+                    <div className="flex mt-5 items-center justify-center">
+                        <div className="loader "></div>
+                    </div>
+                )}
+            </>
         </>
     );
 }

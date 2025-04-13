@@ -1,5 +1,5 @@
 import App from "./App";
-import Map from "./components/Map";
+import MapPage from "./components/MapPage";
 import Template from "./components/Template";
 export const route = [
     {
@@ -9,7 +9,7 @@ export const route = [
             { index: true, element: <App /> },
             {
                 path: "/map",
-                element: <Map />,
+                element: <MapPage />,
             },
         ],
     },

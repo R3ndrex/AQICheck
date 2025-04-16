@@ -15,14 +15,12 @@ export default function MapPage() {
 
     return (
         <main className="flex flex-col gap-5 justify-center items-center m-5">
-            {markerTypes.map(({ marker, title }) => {
-                return (
-                    <section className="flex flex-col justify-center items-center">
-                        <h2 className="text-2xl capitalize ">{title}</h2>
-                        <Map position={position} markerType={marker} />
-                    </section>
-                );
-            })}
+            {markerTypes.map(({ marker, title }) => (
+                <section className="flex flex-col justify-center items-center">
+                    <h2 className="text-2xl capitalize ">{title}</h2>
+                    <Map position={position} markerType={marker} />
+                </section>
+            ))}
         </main>
     );
 }

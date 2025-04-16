@@ -1,11 +1,11 @@
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip } from "recharts";
+function formatDate(date) {
+    const newDate = new Date(date);
+    return `${String(newDate.getMonth() + 1).padStart(2, "0")}.${String(
+        newDate.getDate()
+    ).padStart(2, "0")}`;
+}
 export default function PollutionChart({ data, dataKeys }) {
-    function formatDate(date) {
-        const newDate = new Date(date);
-        return `${String(newDate.getMonth()).padStart(2, 0)}.${String(
-            newDate.getDay()
-        ).padStart(2, 0)}`;
-    }
     return (
         <LineChart height={500} width={500} data={data}>
             {dataKeys.map((key) => (

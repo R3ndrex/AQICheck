@@ -49,10 +49,12 @@ aside {
     to {
         opacity: 0;
         transform: translate(50vh);
+        display: none;
     }
 }
 @keyframes opening {
     from {
+        display: none;
         opacity: 0;
         transform: translate(50vh);
     }

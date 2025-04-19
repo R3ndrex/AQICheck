@@ -2,7 +2,7 @@ import PollutionChart from "./PollutionChart";
 
 export default function PollutionForecast({ pollutionData, pollutionName }) {
     return (
-        <section className="inline-flex gap-5 border-1 p-5">
+        <section className="inline-flex gap-5 flex-wrap border-1 p-5">
             <div className="flex flex-col items-center">
                 <h2 className="text-2xl capitalize">
                     {pollutionName} Forecast

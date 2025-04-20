@@ -51,7 +51,11 @@ function App() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button type="submit" onClick={handleSubmit}>
+                <button
+                    className="cursor-pointer"
+                    type="submit"
+                    onClick={handleSubmit}
+                >
                     Submit
                 </button>
             </header>
@@ -66,7 +70,7 @@ function App() {
             <>
                 {loading && (
                     <div className="flex mt-5 items-center justify-center">
-                        <div className="loader "></div>
+                        <div className="loader"></div>
                     </div>
                 )}
             </>

@@ -1,7 +1,7 @@
-import DataSection from "./components/DataSection.jsx";
+import DataSection from "./DataSection.jsx";
 import { useState } from "react";
 
-function App() {
+function MainPage() {
     const [inputValue, setInputValue] = useState("");
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -47,6 +47,7 @@ function App() {
                 <h1 className="text-2xl">AQI Check</h1>
                 <input
                     type="text"
+                    required
                     name="city"
                     id="city"
                     placeholder="Enter your city"
@@ -82,4 +83,4 @@ function App() {
     );
 }
 
-export default App;
+export default MainPage;

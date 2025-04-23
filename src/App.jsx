@@ -21,6 +21,9 @@ function App() {
                 throw new Error("There is a problem with fetching data");
 
             const json = await response.json();
+            if (json.status === "error") {
+                throw new Error(json.data);
+            }
             return json;
         }
         fetchData()
@@ -60,7 +63,6 @@ function App() {
                     Submit
                 </button>
             </header>
-            <>{data && <DataSection data={data} />}</>
             <>
                 {error && (
                     <h2 className="text-2xl text-red-500 mt-5 flex items-center justify-center">
@@ -68,6 +70,7 @@ function App() {
                     </h2>
                 )}
             </>
+            <>{data && <DataSection data={data} />}</>
             <>
                 {loading && (
                     <div className="flex mt-5 items-center justify-center">

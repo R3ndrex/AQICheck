@@ -24,7 +24,7 @@ export default function Template() {
             </div>
             <aside
                 ref={ref}
-                className={`absolute h-[100%] text-2xl flex flex-col gap-5 items-center top-0 right-0 bg-emerald-200 h-[100vh] w-[25%] ease-in-out duration-[1s] transition ${
+                className={`fixed h-[100%] text-2xl flex flex-col gap-5 items-center top-0 right-0 bg-emerald-200 h-[100vh] w-[25%] ease-in-out duration-[1s] transition ${
                     visible ? "translate-x-0" : "translate-x-full"
                 }`}
             >

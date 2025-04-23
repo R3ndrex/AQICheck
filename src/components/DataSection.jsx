@@ -2,7 +2,7 @@ import PollutionForecast from "./PollutionForecast";
 export default function DataSection({ data }) {
     const DailyArray = Object.entries(data.data.forecast.daily);
     return (
-        <main className="flex gap-5 flex-col items-center mb-[5rem]">
+        <main className="flex gap-5 flex-col items-center m-5">
             <section>
                 <h1 className="text-2xl">{data.data.city.name}</h1>
                 <p>AQI: {data.data.aqi}</p>

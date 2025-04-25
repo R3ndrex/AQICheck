@@ -1,4 +1,6 @@
+import { useOutletContext } from "react-router-dom";
 import Map from "./Map";
+const DEFAULT_POSITION = [51.5074, -0.1278];
 
 const markerTypes = [
     { marker: "usepa-aqi", title: "Air Quality Index" },
@@ -11,14 +13,20 @@ const markerTypes = [
 ];
 
 export default function MapPage() {
-    const position = [51.5074, -0.1278];
-
+    const { longitude, latitude } = useOutletContext();
     return (
         <main className="flex flex-col gap-5 justify-center items-center m-5">
             {markerTypes.map(({ marker, title }) => (
                 <section className="flex flex-col justify-center items-center">
                     <h2 className="text-2xl capitalize ">{title}</h2>
-                    <Map position={position} markerType={marker} />
+                    <Map
+                        position={
+                            longitude && latitude
+                                ? [latitude, longitude]
+                                : DEFAULT_POSITION
+                        }
+                        markerType={marker}
+                    />
                 </section>
             ))}
         </main>

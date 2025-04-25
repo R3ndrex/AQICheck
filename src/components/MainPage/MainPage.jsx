@@ -1,6 +1,6 @@
+import { useOutletContext } from "react-router-dom";
 import DataSection from "./DataSection.jsx";
 import { useState } from "react";
-import { useOutletContext } from "react-router-dom";
 function MainPage() {
     const [inputValue, setInputValue] = useState("");
     const [data, setData] = useState(null);
@@ -8,72 +8,57 @@ function MainPage() {
     const [loading, setLoading] = useState(false);
     const userLocation = useOutletContext();
 
+    async function fetchData(request) {
+        const response = await fetch(
+            `https://api.waqi.info/feed/${request}/?token=${
+                import.meta.env.VITE_TOKEN
+            }`
+        );
+        if (!response.ok)
+            throw new Error("There is a problem with fetching data");
+
+        const json = await response.json();
+        if (json.status === "error") {
+            throw new Error(json.data);
+        }
+        return json;
+    }
+
     function handleSubmit() {
         setError(null);
         setData(null);
         setLoading(true);
-        async function fetchData() {
-            const response = await fetch(
-                `https://api.waqi.info/feed/${inputValue}/?token=${
-                    import.meta.env.VITE_TOKEN
-                }`
-            );
-            if (!response.ok)
-                throw new Error("There is a problem with fetching data");
-
-            const json = await response.json();
-            if (json.status === "error") {
-                throw new Error(json.data);
-            }
-            return json;
-        }
-        fetchData()
+        fetchData(inputValue)
             .then((response) => {
                 setData(response);
-                console.log(response);
                 setError(null);
             })
             .catch((error) => {
                 if (error.name !== "AbortError") setError(error.message);
                 setData(null);
             })
-            .finally(() => {
-                setLoading(false);
-            });
+            .finally(() => setLoading(false));
     }
-    function handleSubmit2(userLocation) {
-        console.log(userLocation);
+    function handleSubmit2() {
         setError(null);
         setData(null);
         setLoading(true);
-        async function fetchData() {
-            const response = await fetch(
-                `https://api.waqi.info/feed/geo:${userLocation.lat};${
-                    userLocation.long
-                }/?token=${import.meta.env.VITE_TOKEN}`
-            );
-            if (!response.ok)
-                throw new Error("There is a problem with fetching data");
 
-            const json = await response.json();
-            if (json.status === "error") {
-                throw new Error(json.data);
-            }
-            return json;
+        if (userLocation) {
+            fetchData(`geo:${userLocation.latitude};${userLocation.longitude}`)
+                .then((response) => {
+                    setData(response);
+                    setError(null);
+                })
+                .catch((error) => {
+                    if (error.name !== "AbortError") setError(error.message);
+                    setData(null);
+                })
+                .finally(() => setLoading(false));
+        } else {
+            setLoading(false);
+            setError("Browser doesn't support geolocation");
         }
-        fetchData()
-            .then((response) => {
-                setData(response);
-                console.log(response);
-                setError(null);
-            })
-            .catch((error) => {
-                if (error.name !== "AbortError") setError(error.message);
-                setData(null);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
     }
 
     return (
@@ -98,13 +83,7 @@ function MainPage() {
                 >
                     Submit
                 </button>
-                <button
-                    onClick={() => {
-                        handleSubmit2(userLocation);
-                    }}
-                >
-                    Submit 2
-                </button>
+                <button onClick={handleSubmit2}>Submit 2</button>
             </header>
             <>
                 {error && (

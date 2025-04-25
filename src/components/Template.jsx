@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+
 export default function Template() {
     const ref = useRef();
     const [visible, setVisible] = useState(false);
@@ -9,7 +10,7 @@ export default function Template() {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
-                    setUserLocation(latitude, longitude);
+                    setUserLocation({ latitude, longitude });
                 },
                 (err) => {
                     console.error(

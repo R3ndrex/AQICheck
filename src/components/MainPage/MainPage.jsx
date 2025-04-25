@@ -1,11 +1,12 @@
 import DataSection from "./DataSection.jsx";
 import { useState } from "react";
-
+import { useOutletContext } from "react-router-dom";
 function MainPage() {
     const [inputValue, setInputValue] = useState("");
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const userLocation = useOutletContext();
 
     function handleSubmit() {
         setError(null);
@@ -16,6 +17,40 @@ function MainPage() {
                 `https://api.waqi.info/feed/${inputValue}/?token=${
                     import.meta.env.VITE_TOKEN
                 }`
+            );
+            if (!response.ok)
+                throw new Error("There is a problem with fetching data");
+
+            const json = await response.json();
+            if (json.status === "error") {
+                throw new Error(json.data);
+            }
+            return json;
+        }
+        fetchData()
+            .then((response) => {
+                setData(response);
+                console.log(response);
+                setError(null);
+            })
+            .catch((error) => {
+                if (error.name !== "AbortError") setError(error.message);
+                setData(null);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }
+    function handleSubmit2(userLocation) {
+        console.log(userLocation);
+        setError(null);
+        setData(null);
+        setLoading(true);
+        async function fetchData() {
+            const response = await fetch(
+                `https://api.waqi.info/feed/geo:${userLocation.lat};${
+                    userLocation.long
+                }/?token=${import.meta.env.VITE_TOKEN}`
             );
             if (!response.ok)
                 throw new Error("There is a problem with fetching data");
@@ -62,6 +97,13 @@ function MainPage() {
                     onClick={handleSubmit}
                 >
                     Submit
+                </button>
+                <button
+                    onClick={() => {
+                        handleSubmit2(userLocation);
+                    }}
+                >
+                    Submit 2
                 </button>
             </header>
             <>

@@ -1,8 +1,24 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 export default function Template() {
     const ref = useRef();
     const [visible, setVisible] = useState(false);
+    const [userLocation, setUserLocation] = useState(null);
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    setUserLocation({ lat: latitude, long: longitude });
+                },
+                (err) => {
+                    console.error("Ошибка геолокации:", err.message);
+                }
+            );
+        } else {
+            console.error("Геолокация не поддерживается этим браузером");
+        }
+    }, []);
     return (
         <>
             <div
@@ -12,7 +28,7 @@ export default function Template() {
                     }
                 }}
             >
-                <Outlet />
+                <Outlet context={userLocation} />
                 <div
                     className="burger m-5 absolute top-0 right-0 w-[3rem] h-[3rem]"
                     onClick={() => setVisible((prev) => !prev)}

@@ -2,7 +2,7 @@ import PollutionChart from "./PollutionChart";
 
 export default function PollutionForecast({ pollutionData, pollutionName }) {
     return (
-        <section className="inline-flex gap-5 flex-wrap border-1 p-5">
+        <section className="inline-flex gap-5 flex-wrap items-center justify-center border-1 p-5">
             <div className="flex flex-col items-center">
                 <h2 className="text-2xl capitalize">
                     {pollutionName} Forecast
@@ -12,16 +12,18 @@ export default function PollutionForecast({ pollutionData, pollutionName }) {
                     dataKeys={["avg", "max", "min"]}
                 />
             </div>
-            {pollutionData.map((day) => (
-                <div className="flex flex-col items-start justify-center">
-                    <h3>Day: {day.day}</h3>
-                    <ul>
-                        <li>Max: {day.max}</li>
-                        <li>Min: {day.min}</li>
-                        <li>Average: {day.avg}</li>
-                    </ul>
-                </div>
-            ))}
+            <div className="grid grid-cols-3 items-center h-min gap-[1.5rem] items-center">
+                {pollutionData.map((day) => (
+                    <div className="flex flex-col justify-center">
+                        <h3>Day: {day.day}</h3>
+                        <ul>
+                            <li>Max: {day.max}</li>
+                            <li>Min: {day.min}</li>
+                            <li>Average: {day.avg}</li>
+                        </ul>
+                    </div>
+                ))}
+            </div>
         </section>
     );
 }

@@ -9,14 +9,14 @@ export default function Template() {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
-                    setUserLocation({ lat: latitude, long: longitude });
+                    setUserLocation(latitude, longitude);
                 },
                 (err) => {
-                    console.error("Ошибка геолокации:", err.message);
+                    console.error(
+                        `Geolocation Error: ${err.message}\n Error code: ${err.code}`
+                    );
                 }
             );
-        } else {
-            console.error("Геолокация не поддерживается этим браузером");
         }
     }, []);
     return (

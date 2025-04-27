@@ -97,12 +97,7 @@ export default function Map({ position }) {
     }
 
     return (
-        <MapContainer
-            className="map"
-            center={position}
-            zoom={10}
-            style={{ height: "100vh" }}
-        >
+        <MapContainer className="map" center={position} zoom={10}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -10,6 +10,7 @@ export default function MapPage() {
             <section className="flex flex-col justify-center items-center">
                 <h2 className="text-2xl capitalize">Air Quality Index</h2>
                 <Map
+                    key={`${longitude} ${latitude}`}
                     position={
                         longitude && latitude
                             ? [latitude, longitude]

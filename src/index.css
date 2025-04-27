@@ -25,6 +25,7 @@ body {
     overflow-x: hidden;
 }
 aside {
+    border-left: 1px solid black;
     > * {
         transition: transform 0.1s;
     }

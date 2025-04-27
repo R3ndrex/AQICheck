@@ -12,6 +12,7 @@ input {
     border-bottom: 1px solid gray;
 }
 .map {
+    margin-top: 2.5rem;
     border: 1px solid black;
     aspect-ratio: 1/1;
     height: 80vh;
@@ -54,6 +55,7 @@ aside {
 }
 @media screen and (width<1500px) {
     aside {
+        border-left: none;
         height: max-content;
         width: 100%;
         flex-direction: row;

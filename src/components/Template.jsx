@@ -31,7 +31,7 @@ export default function Template() {
             >
                 <Outlet context={userLocation} />
                 <div
-                    className="burger cursor-pointer m-5 absolute top-0 right-0 w-[3rem] h-[3rem]"
+                    className="burger cursor-pointer m-5 mt-1 absolute top-0 right-0 w-[3rem] h-[3rem]"
                     onClick={() => setVisible((prev) => !prev)}
                 >
                     <div className="h-[1rem]"></div>

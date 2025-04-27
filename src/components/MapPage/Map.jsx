@@ -164,28 +164,6 @@ export default function Map({ position }) {
                                         )
                                 )}
                                 <br />
-                                <b>Weather:</b>
-                                <br />
-                                {Object.entries(
-                                    popupData[station.uid].iaqi || {}
-                                )
-                                    .filter(
-                                        ([key]) =>
-                                            ![
-                                                "pm25",
-                                                "pm10",
-                                                "o3",
-                                                "no2",
-                                                "so2",
-                                                "co",
-                                            ].includes(key)
-                                    )
-                                    .map(([key, value]) => (
-                                        <div key={key}>
-                                            {key.toUpperCase()}: {value.v}
-                                        </div>
-                                    ))}
-                                <br />
                                 <b>Source:</b>
                                 <br />
                                 {popupData[station.uid].attributions?.map(

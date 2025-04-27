@@ -6,7 +6,7 @@ export default function MapPage() {
     const context = useOutletContext() || {};
     const { longitude, latitude } = context;
     return (
-        <main className="flex flex-col gap-5 justify-center items-center m-5">
+        <main className="flex flex-col gap-5 justify-center items-center mt-5">
             <section className="flex flex-col justify-center items-center">
                 <h2 className="text-2xl capitalize">Air Quality Index</h2>
                 <Map

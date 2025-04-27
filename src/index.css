@@ -34,6 +34,11 @@ aside {
     }
 }
 
+.graph {
+    width: 90%;
+    height: 500px;
+}
+
 .loader {
     width: 50px;
     aspect-ratio: 1;
@@ -61,5 +66,10 @@ aside {
     }
     header {
         margin-top: 2.5rem;
+    }
+}
+@media screen and (width<1000px) {
+    .graph {
+        height: 300px;
     }
 }

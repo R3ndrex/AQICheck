@@ -13,7 +13,8 @@ const markerTypes = [
 ];
 
 export default function MapPage() {
-    const { longitude, latitude } = useOutletContext();
+    const context = useOutletContext() || {};
+    const { longitude, latitude } = context;
     return (
         <main className="flex flex-col gap-5 justify-center items-center m-5">
             {markerTypes.map(({ marker, title }) => (

@@ -76,14 +76,18 @@ function MainPage() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                 />
-                <button
-                    className="cursor-pointer"
-                    type="submit"
-                    onClick={handleSubmit}
-                >
-                    Submit
-                </button>
-                <button onClick={handleSubmit2}>Submit 2</button>
+                <div className="flex gap-5">
+                    <button
+                        className="cursor-pointer"
+                        type="submit"
+                        onClick={handleSubmit}
+                    >
+                        Get data
+                    </button>
+                    <button className="cursor-pointer" onClick={handleSubmit2}>
+                        Get exact data
+                    </button>
+                </div>
             </header>
             <>
                 {error && (

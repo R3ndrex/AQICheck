@@ -47,3 +47,19 @@ aside {
         transform: rotate(0.5turn);
     }
 }
+@media screen and (width<1500px) {
+    aside {
+        height: max-content;
+        width: 100%;
+        flex-direction: row;
+        > * {
+            margin: 0;
+        }
+    }
+    .mapmain {
+        margin-top: 2.5rem;
+    }
+    header {
+        margin-top: 2.5rem;
+    }
+}

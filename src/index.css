@@ -30,10 +30,10 @@ body {
 }
 aside {
     border-left: 1px solid black;
-    > * {
+    li {
         transition: transform 0.1s;
     }
-    > *:hover {
+    li:hover {
         transform: scale(1.1);
     }
 }
@@ -61,8 +61,10 @@ aside {
         border-left: none;
         height: max-content;
         width: 100%;
-        flex-direction: row;
-        > * {
+        ul {
+            flex-direction: row;
+        }
+        li {
             margin: 0;
         }
     }

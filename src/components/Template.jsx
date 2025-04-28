@@ -41,14 +41,18 @@ export default function Template() {
             </div>
             <aside
                 ref={ref}
-                className={`fixed h-[100%] text-2xl flex flex-col gap-5 items-center top-0 right-0 p-1 bg-emerald-200 h-[100vh] w-[25%] ease-in-out duration-[1s] transition ${
+                className={`fixed h-[100%] text-2xl top-0 right-0 p-1 bg-emerald-200 h-[100vh] w-[25%] ease-in-out duration-[1s] transition ${
                     visible ? "translate-x-0" : "translate-x-full"
                 }`}
             >
-                <Link className="mt-8" to={"/map"}>
-                    View Map
-                </Link>
-                <Link to={""}>View Main Page</Link>
+                <ul className="flex flex-col items-center gap-5">
+                    <li className="mt-8">
+                        <Link to={"/map"}>View Map</Link>
+                    </li>
+                    <li>
+                        <Link to={""}>View Main Page</Link>
+                    </li>
+                </ul>
             </aside>
         </>
     );

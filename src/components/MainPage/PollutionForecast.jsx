@@ -14,7 +14,7 @@ export default function PollutionForecast({ pollutionData, pollutionName }) {
             </div>
             <div className="grid grid-cols-3 items-center h-min gap-[1.5rem] items-center">
                 {pollutionData.map((day) => (
-                    <div className="flex flex-col justify-center">
+                    <div key={day.day} className="flex flex-col justify-center">
                         <h3>Day: {day.day}</h3>
                         <ul>
                             <li>Max: {day.max}</li>

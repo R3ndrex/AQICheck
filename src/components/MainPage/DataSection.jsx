@@ -11,6 +11,7 @@ export default function DataSection({ data }) {
                 <PollutionForecast
                     pollutionData={pollutionValue}
                     pollutionName={pollutionName}
+                    key={pollutionName}
                 />
             ))}
         </main>

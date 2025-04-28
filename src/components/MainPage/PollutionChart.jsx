@@ -19,6 +19,7 @@ export default function PollutionChart({ data, dataKeys }) {
                 <LineChart data={data}>
                     {dataKeys.map((key) => (
                         <Line
+                            key={key}
                             type="monotone"
                             dataKey={key}
                             stroke={

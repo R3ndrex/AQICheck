@@ -13,6 +13,7 @@ function formatDate(date) {
     ).padStart(2, "0")}`;
 }
 export default function PollutionChart({ data, dataKeys }) {
+    console.log(data);
     return (
         <div className="graph">
             <ResponsiveContainer>
@@ -33,7 +34,11 @@ export default function PollutionChart({ data, dataKeys }) {
                     ))}
 
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                    <XAxis dataKey={"day"} tickFormatter={formatDate} />
+                    <XAxis
+                        dataKey={"day"}
+                        tickFormatter={formatDate}
+                        interval="preserveStartEnd"
+                    />
                     <Tooltip />
                 </LineChart>
             </ResponsiveContainer>

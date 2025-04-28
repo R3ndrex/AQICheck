@@ -15,6 +15,9 @@ input {
     margin-top: 2.5rem;
     border: 1px solid black;
     aspect-ratio: 1/1;
+    height: 90%;
+}
+.mapmain {
     height: 80vh;
 }
 .burger {
@@ -73,5 +76,8 @@ aside {
 @media screen and (width<1000px) {
     .graph {
         height: 300px;
+    }
+    .map {
+        aspect-ratio: 3/4;
     }
 }

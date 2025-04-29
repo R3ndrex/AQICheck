@@ -39,7 +39,7 @@ function MainPage() {
             })
             .finally(() => setLoading(false));
     }
-    function handleSubmit2() {
+    function handleSubmitExact() {
         setError(null);
         setData(null);
         setLoading(true);
@@ -84,7 +84,10 @@ function MainPage() {
                     >
                         Get data
                     </button>
-                    <button className="cursor-pointer" onClick={handleSubmit2}>
+                    <button
+                        className="cursor-pointer"
+                        onClick={handleSubmitExact}
+                    >
                         Get exact data
                     </button>
                 </div>

@@ -13,7 +13,6 @@ function formatDate(date) {
     ).padStart(2, "0")}`;
 }
 export default function PollutionChart({ data, dataKeys }) {
-    console.log(data);
     return (
         <div className="graph">
             <ResponsiveContainer>
